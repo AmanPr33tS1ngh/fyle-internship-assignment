@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome added only for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container mt-5 p-5 border border-secondary">
+        <img style="width: 20%" class="pb-5" src="https://www.fylehq.com/assets/images/svg-images/fylelogo.svg" />
+        <h2>Income Form</h2>
+        <form id="incomeForm">
+            <div class="mb-3">
+                <!-- Gross Income Input -->
+                <label for="grossIncome" class="form-label">Enter Gross Annual Income <span data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Gross annual income is your total salary in a year before any deductions."><i
+                            class="fas fa-question-circle"></i></span></label>
+                <div class="input-group">
+                    <input class="form-control check-numeric number-input" id="grossIncome"
+                        placeholder="Enter gross annual income">
+
+
+                    <span data-bs-toggle="tooltip" class="error-tooltip error-icon warning-icon "
+                        data-bs-placement="top" title="Please enter numbers only"><i
+                            class="fas fa-exclamation-circle"></i></span>
+
+                    <span data-bs-toggle="tooltip" class="error-tool error warning-icon " data-bs-placement="top"
+                        title="Please enter a value"><i class="fas fa-exclamation-circle"></i></span>
+                </div>
+            </div>
+
+            <!-- Extra Income -->
+            <div class="mb-3">
+                <label for="extraIncome" class="form-label">Enter Extra Income <span data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="This includes any additional income sources apart from your gross annual income."><i
+                            class="fas fa-question-circle"></i></span></label>
+                <div class="input-group">
+                    <input class="form-control check-numeric number-input" id="extraIncome"
+                        placeholder="Enter extra income">
+
+
+                    <span data-bs-toggle="tooltip" class="error-tooltip error-icon warning-icon "
+                        data-bs-placement="top" title="Please enter numbers only"><i
+                            class="fas fa-exclamation-circle"></i></span>
+
+                    <span data-bs-toggle="tooltip" class="error-tool error warning-icon " data-bs-placement="top"
+                        title="Please enter a value"><i class="fas fa-exclamation-circle"></i></span>
+                </div>
+            </div>
+
+            <!-- Age Group -->
+            <div class="mb-3">
+                <label for="ageGroup" class="form-label">Select Age Group <span data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="This indicates the age range you belong to."><i
+                            class="fas fa-question-circle"></i></span></label>
+                <div class="d-flex">
+                    <div class="w-100">
+                        <select class="form-select" id="ageGroup" required>
+                            <option selected disabled>Select age group</option>
+                            <option value="<40">&lt; 40</option>
+                            <option value="≥40&<60">≥ 40 &lt; 60</option>
+                            <option value="≥60">≥ 60</option>
+                        </select>
+                    </div>
+                    <span class="age-error warning-icon d-none" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Please select an age group"><i class="fas fa-exclamation-triangle"></i></span>
+                </div>
+            </div>
+
+            <!-- Deductions -->
+            <div class="mb-3">
+                <label for="deductions" class="form-label">Enter Total Applicable Deductions <span
+                        data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="These are deductions applicable to your income, such as taxes, contributions, etc."><i
+                            class="fas fa-question-circle"></i></span></label>
+                <div class="input-group">
+                    <input class="form-control check-numeric number-input" id="deductions"
+                        placeholder="Enter total applicable deductions">
+
+
+                    <span data-bs-toggle="tooltip" class="error-tooltip error-icon warning-icon "
+                        data-bs-placement="top" title="Please enter numbers only"><i
+                            class="fas fa-exclamation-circle"></i></span>
+
+                    <span data-bs-toggle="tooltip" class="error-tool error warning-icon " data-bs-placement="top"
+                        title="Please enter a value"><i class="fas fa-exclamation-circle"></i></span>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary w-50">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="responseModalLabel">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center" id="responseContent">
+                    <h2>Your overall total income will be</h1>
+                        <div class="modal-body d-flex justify-content-center" id="response">
+                            <!-- Response/Total income will be shown here -->
+                        </div>
+                        <h4 class="">after tax <span id="tax">
+                                <!-- Tax will be shown here -->
+                            </span> deductions</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+
+            // check if wrong data is being added to inputs
+            $('.number-input').on('input', function () {
+                var value = $(this).val().trim();
+                var $errorIcon = $(this).next('.error-icon');
+                $errorIcon.css('display', 'inline !important');
+                var $errorTooltip = $(this).nextAll('.error-tooltip').first();
+                $errorTooltip.css('display', 'inline !important');
+
+
+                $(this).next('.error-tool').hide();
+                $(this).nextAll('.error').first().hide();
+
+                // Validate input
+                if (!/^\d+$/.test(value)) {
+                    $errorIcon.show();
+                    $errorTooltip.show();
+                } else {
+                    $errorIcon.hide();
+                    $errorTooltip.hide();
+                }
+            });
+
+            // function to check if all values are added if not then display error
+            function checkInputs() {
+                var hasEmptyInput = false;
+
+                $(".form-control").each(function () {
+                    var value = $(this).val().trim();
+                    if (value === "") {
+                        var $errorIcon = $(this).next('.error-icon');
+                        $errorIcon.show();
+                        var $errorTooltip = $(this).nextAll('.error-tooltip').first();
+                        $errorTooltip.show();
+                        hasEmptyInput = true;
+                    }
+                });
+
+                return hasEmptyInput;
+            }
+
+
+            // show tooltip on hover
+            $('.error-icon').hover(function () {
+                var $tooltip = $(this).siblings('.error-tooltip');
+                var tooltipText = $tooltip.text();
+                if (tooltipText) {
+                    $tooltip.show();
+                }
+            }, function () {
+                $(this).siblings('.error-tooltip').hide();
+            });
+
+            // form submission
+            $("#incomeForm").submit(function (e) {
+                e.preventDefault(); // prevent default form submission
+
+                if (checkInputs()) {
+                    return;
+                }
+
+                // Check for errors in options of age
+                var hasError = false;
+                $(".check-numeric").each(function () {
+                    var value = $(this).val();
+                    if (isNaN(value)) {
+                        $(this).closest(".input-group").find(".warning-icon").removeClass("d-none");
+                        hasError = true;
+                    } else {
+                        $(this).closest(".input-group").find(".warning-icon").addClass("d-none");
+                    }
+                });
+
+                // Check age group
+                var ageGroup = $("#ageGroup").val();
+                if (!ageGroup) {
+                    $(".age-error").removeClass("d-none");
+                    hasError = true;
+                } else {
+                    $(".age-error").addClass("d-none");
+                }
+
+                // If any errors, stop further processing
+                if (hasError) return;
+
+                // Calculations
+                var grossIncome = parseFloat($("#grossIncome").val()) || 0;
+                var extraIncome = parseFloat($("#extraIncome").val()) || 0;
+                var deductions = parseFloat($("#deductions").val()) || 0;
+
+                // Gross Annual Income + Extra Income - Deductions
+                var totalIncome = grossIncome + extraIncome - deductions;
+                const age = $("#ageGroup").val();
+                var tax = 1;
+
+                // check all conditions
+
+                /*
+                if income > 8L 
+                    if age < 40 apply 30% tax
+                    if age > 40 & 60 < apply 40% tax
+                    if age > 60 apply 10% tax
+                */
+
+                if (totalIncome > 800000) {
+                    switch (age) {
+                        case "<40":
+                            tax = 0.3;
+                            break;
+
+                        case "≥40&<60":
+                            tax = 0.4;
+                            break;
+
+                        case "≥60":
+                            tax = 0.1;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                totalIncome = tax * (totalIncome);
+                // Show tax calculation result inside modal
+                $("#response").text(`₹${totalIncome.toFixed(2)}`);
+
+                // Show modal
+                $("#responseModal").modal("show");
+
+                // If tax was there show it
+                if (tax > 1) {
+                    $("#tax").text(`(${tax * 100}%)`);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

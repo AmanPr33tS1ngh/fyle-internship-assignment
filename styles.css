@@ -1,0 +1,48 @@
+.warning-icon {
+  margin-left: -30px;
+}
+
+.age-error {
+  margin-left: 5px;
+  margin-top: 8px;
+}
+
+.error-icon {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-left: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.error-tooltip {
+  display: none;
+  position: absolute;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.error {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-left: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.error-tool {
+  display: none;
+  position: absolute;
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 999;
+}
