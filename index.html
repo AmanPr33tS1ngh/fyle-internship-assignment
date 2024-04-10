@@ -261,7 +261,8 @@
                     }
                 }
 
-                totalIncome = tax * (totalIncome);
+                const totalTax = tax * (totalIncome);
+                totalIncome = totalIncome - totalTax;
                 // Show tax calculation result inside modal
                 $("#response").text(`₹${totalIncome.toFixed(2)}`);
 
