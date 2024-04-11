@@ -117,9 +117,9 @@
                         <div class="modal-body d-flex justify-content-center" id="response">
                             <!-- Response/Total income will be shown here -->
                         </div>
-                        <h4 class="">after tax <span id="tax">
+                        <h4 class="">after <span id="tax">
                                 <!-- Tax will be shown here -->
-                            </span> deductions</h4>
+                            </span>tax deductions</h4>
                 </div>
 
                 <div class="modal-footer">
@@ -245,15 +245,15 @@
                 if (totalIncome > 800000) {
                     switch (age) {
                         case "<40":
-                            tax = 0.3;
+                            tax = 30;
                             break;
 
                         case "≥40&<60":
-                            tax = 0.4;
+                            tax = 40;
                             break;
 
                         case "≥60":
-                            tax = 0.1;
+                            tax = 10;
                             break;
 
                         default:
@@ -261,8 +261,15 @@
                     }
                 }
 
-                const totalTax = tax * (totalIncome);
-                totalIncome = totalIncome - totalTax;
+                console.log("totalTax1", totalIncome, tax);
+                if (tax > 1){
+                    const totalTax = (tax / 100) * (totalIncome);
+                    console.log("totalTax2", totalIncome, tax);
+                    totalIncome = totalIncome - totalTax;
+                }
+                
+                console.log("totalTax3", totalIncome, tax);
+
                 // Show tax calculation result inside modal
                 $("#response").text(`₹${totalIncome.toFixed(2)}`);
 
@@ -271,7 +278,7 @@
 
                 // If tax was there show it
                 if (tax > 1) {
-                    $("#tax").text(`(${tax * 100}%)`);
+                    $("#tax").text(`${tax}% `);
                 }
             });
         });
