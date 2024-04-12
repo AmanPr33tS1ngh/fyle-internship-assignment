@@ -33,18 +33,27 @@ This is a simple web application designed to calculate total income after deduct
 1. **Usage:**
    - Fill out the form with your gross annual income, extra income, applicable deductions, and select your age group.
    - Click on the "Submit" button to calculate your total income after deductions and taxes.
+   
+![plot](./img/Screenshot 2024-04-12 at 9.44.28 AM.png)
 
 2. **Input Validation:**
    - Numeric values are required for income-related fields. Non-numeric inputs will trigger warnings.
    - All fields must be filled out before submission.
 
+![plot](./img/Screenshot 2024-04-12 at 9.32.16 AM.png)
+
 3. **Age Group Selection:**
    - Select your age group from the dropdown menu provided.
    - Age group selection determines the tax rate applied to your income.
 
+![plot](./img/Screenshot 2024-04-12 at 9.32.16 AM.png)
+
 4. **Modal Output:**
    - After submission, a modal window displays your overall total income after deductions and taxes.
    - The applied tax rate is also displayed if applicable.
+
+![plot](./img/Screenshot 2024-04-12 at 9.32.53 AM.png)
+
 
 ## How to Run:
 
