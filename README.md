@@ -34,26 +34,25 @@ This is a simple web application designed to calculate total income after deduct
    - Fill out the form with your gross annual income, extra income, applicable deductions, and select your age group.
    - Click on the "Submit" button to calculate your total income after deductions and taxes.
    
-![plot](./img/Screenshot 2024-04-12 at 9.44.28 AM.png)
+![Screenshot 1](./img/Screenshot%202024-04-12%20at%209.44.28%20AM.png)
 
 2. **Input Validation:**
    - Numeric values are required for income-related fields. Non-numeric inputs will trigger warnings.
    - All fields must be filled out before submission.
 
-![plot](https://github.com/AmanPr33tS1ngh/fyle-internship-assignment/blob/master/img/Screenshot 2024-04-12 at 9.32.16 AM.png)
+![Screenshot 2](./img/Screenshot%202024-04-12%20at%209.32.16%20AM.png)
 
 3. **Age Group Selection:**
    - Select your age group from the dropdown menu provided.
    - Age group selection determines the tax rate applied to your income.
 
-![plot](https://github.com/AmanPr33tS1ngh/fyle-internship-assignment/blob/master/img/Screenshot 2024-04-12 at 9.32.16 AM.png)
+![Screenshot 3](./img/Screenshot%202024-04-12%20at%209.32.16%20AM.png)
 
 4. **Modal Output:**
    - After submission, a modal window displays your overall total income after deductions and taxes.
    - The applied tax rate is also displayed if applicable.
 
-![plot](https://github.com/AmanPr33tS1ngh/fyle-internship-assignment/blob/master/img/Screenshot 2024-04-12 at 9.32.53 AM.png)
-
+![Screenshot 4](./img/Screenshot%202024-04-12%20at%209.32.53%20AM.png)
 
 ## How to Run:
 
